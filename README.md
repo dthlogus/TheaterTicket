@@ -12,6 +12,7 @@
 
 ## Criadores
 
-<div align="justify"> Luis Gabriel Lopo</div align>
-<div align="justify"> Matheus Ribeiro</div align>
+<div align="justify"> Luis Gabriel Lopo</div>
+<div align="justify"> Matheus Ribeiro</div>
 <div align="justify"> João Nicholas de Figueiredo Seabra</div>
+<div align="justify"> Henrique Batista Coelho II</div>

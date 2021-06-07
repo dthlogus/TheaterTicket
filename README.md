@@ -14,4 +14,4 @@
 
 <div align="justify"> Luis Gabriel Lopo</div align>
 <div align="justify"> Matheus Ribeiro</div align>
-
+<div align="justify"> João Nicholas de Figueiredo Seabra</div>

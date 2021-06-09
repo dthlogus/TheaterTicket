@@ -1,6 +1,6 @@
 package br.com.senai.principal.controle;
 
-import br.com.senai.principal.Dao.ClienteDao;
+import br.com.senai.principal.Dao.Banco;
 import br.com.senai.principal.modelo.Cliente;
 
 import java.util.Scanner;
@@ -9,7 +9,7 @@ public class ClienteControler {
 
     private Boolean continuar = true;
     private Integer opcao = 0;
-    Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in);
 
     public void iniciar(){
         while(continuar){
@@ -52,17 +52,17 @@ public class ClienteControler {
 
         cliente.setNome(nome);
         cliente.setCpf(cpf);
-        ClienteDao clienteDao = new ClienteDao();
-        clienteDao.salvar(cliente);
+        Banco banco = new Banco();
+        banco.salvarCliente(cliente);
     }
 
     public void buscarPorCPF(Scanner scan){
-        ClienteDao clienteDao = new ClienteDao();
+        Banco banco = new Banco();
 
         System.out.println("Digite o cpf que deseja buscar");
         String cpf = scan.nextLine();
 
-        Cliente cliente = clienteDao.buscarPorCpf(cpf);
-        System.out.printf("Nome do usuário %s \nCpf do usuário %s\n",cliente.getNome(), cliente.getCpf());
+        Cliente cliente = banco.buscarClientePorCpf(cpf);
+        System.out.println(cliente);
     }
 }

@@ -35,7 +35,6 @@ public class ClienteControler {
             }
         }
 
-        scan.close();
     }
 
     public void cadastrarCliente(Scanner scan) {

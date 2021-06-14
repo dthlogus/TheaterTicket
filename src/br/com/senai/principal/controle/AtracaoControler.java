@@ -48,7 +48,6 @@ public class AtracaoControler {
                     break;
             }
         }
-        scan.close();
     }
 
     private void mostrarTodasAsAtracoes() {

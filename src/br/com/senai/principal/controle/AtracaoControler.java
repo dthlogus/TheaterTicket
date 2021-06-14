@@ -20,6 +20,7 @@ public class AtracaoControler {
             System.out.println("2. Alterar atração");
             System.out.println("3. Deletar atração");
             System.out.println("4. Mostrar atrações");
+            System.out.println("5. Mostrar Poltronas");
             System.out.println("0. Sair");
             opcao = Integer.valueOf(scan.nextLine());
 
@@ -35,6 +36,9 @@ public class AtracaoControler {
                     break;
                 case 4:
                     mostrarTodasAsAtracoes();
+                    break;
+                case 5:
+                    mostrarPoltrona(scan);
                     break;
                 case 0:
                     continuar = false;
@@ -84,5 +88,12 @@ public class AtracaoControler {
         atracao.setDiretor(scan.nextLine());
         atracao.setHorario(Horario.escolherHorario(scan));
         banco.salvarAtracao(atracao);
+    }
+
+    private void mostrarPoltrona(Scanner scan){
+        Banco banco = new Banco();
+        System.out.println("Qual é o ID da atração desejada?");
+        Atracao atracao = banco.buscarAtracaoPorId(Integer.valueOf(scan.nextLine()));
+        System.out.println(atracao);
     }
 }

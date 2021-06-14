@@ -11,6 +11,11 @@ public class Atracao {
     private Genero genero;
     private String diretor;
     private Horario horario;
+    private Poltrona poltrona;
+
+    public void Atracao(){
+        poltrona = new Poltrona();
+    }
 
     public Integer getId() {
         return id;
@@ -58,6 +63,10 @@ public class Atracao {
 
     public void setHorario(Horario horario) {
         this.horario = horario;
+    }
+
+    public Poltrona getPoltrona() {
+        return this.poltrona;
     }
 
     @Override

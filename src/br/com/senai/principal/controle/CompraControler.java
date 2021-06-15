@@ -26,11 +26,12 @@ public class CompraControler {
                 System.out.println(" 4 - CAMAROTE");
                 System.out.println(" 5 - BALCÃO NOBRE");
                 System.out.println(" 0 - Sair");
-                opcao =  Integer.valueOf(scan.nextLine());
+                opcao = Integer.valueOf(scan.nextLine());
 
                 switch (opcao) {
                     case 1 :
                         plateiaA(scan);
+                        System.out.println(valorTotal);
                         break;
                     case 2 :
                         plateiaB(scan);
@@ -51,12 +52,8 @@ public class CompraControler {
                         continuar = true;
                         break;
                 }
-                System.out.println(valorTotal);
-            }
 
-
-
-
+            }System.out.println("O valor total é: R$ " + valorTotal);
 
     }
     // O usuario vai colocar o CPF dele e com isso vai realizar uma procura no banco e motrar se está cadastrado.
@@ -98,7 +95,7 @@ public class CompraControler {
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
         System.out.println("Quantas poltronas deseja da Plateia A: ");
-        qtd = scan.nextInt();
+        qtd = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         atracao.getPoltrona().comprarPlateiaA(qtd);
         valorTotal += 40.00 * qtd;
@@ -111,7 +108,7 @@ public class CompraControler {
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
         System.out.println("Quantas poltronas deseja da Plateia B: ");
-        qtd = scan.nextInt();
+        qtd = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         atracao.getPoltrona().comprarPlateiaB(qtd);
         valorTotal += 60.00 * qtd;
@@ -124,7 +121,7 @@ public class CompraControler {
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
         System.out.println("Quantas poltronas deseja da Frisa: ");
-        qtd = scan.nextInt();
+        qtd = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         atracao.getPoltrona().comprarFrisa(qtd);
         valorTotal += 80.00 * qtd;
@@ -137,7 +134,7 @@ public class CompraControler {
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
         System.out.println("Quantas poltronas deseja do Camarote: ");
-        qtd = scan.nextInt();
+        qtd = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         atracao.getPoltrona().comprarCamarote(qtd);
         valorTotal += 120.00 * qtd;
@@ -150,7 +147,7 @@ public class CompraControler {
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
         System.out.println("Quantas poltronas deseja do Balcão Nobre: ");
-        qtd = scan.nextInt();
+        qtd = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         atracao.getPoltrona().comprarBalcaoNobre(qtd);
         valorTotal += 250.00 * qtd;

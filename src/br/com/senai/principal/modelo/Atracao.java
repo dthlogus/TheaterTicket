@@ -13,8 +13,8 @@ public class Atracao {
     private Horario horario;
     private Poltrona poltrona;
 
-    public void Atracao(){
-        poltrona = new Poltrona();
+    public Atracao(){
+        this.poltrona = new Poltrona();
     }
 
     public Integer getId() {
@@ -71,6 +71,6 @@ public class Atracao {
 
     @Override
     public String toString() {
-        return "| " + this.id + " | " + this.nome + " | " + "| " + this.faixaEtaria + " | " + this.genero + " | " + "| " + this.diretor + " |";
+        return "| ID: " + this.id + " | NOME DA PEÇA: " + this.nome + " | " + "|---- RECOMENDAÇÃO DE IDADE: " + this.faixaEtaria + " ANOS ---| GENERO: " + this.genero + " | " + "| DIRETOR: " + this.diretor + " |";
     }
 }

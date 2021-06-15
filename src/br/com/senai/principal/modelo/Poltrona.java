@@ -9,7 +9,7 @@ public class Poltrona {
     private Integer qtCamarote;
     private Integer qtBalcaoNobre;
 
-    public void Poltrona(){
+    public Poltrona(){
         this.qtPlateiaA = 25;
         this.qtPlateiaB = 100;
         this.qtFrisa = 30;
@@ -88,7 +88,8 @@ public class Poltrona {
 
     @Override
     public String toString() {
-        String retorno = String.format("Quantidade de Poltronas A: %d \nQuantidade de Poltrona B: %d \nQuantidade de Frisa: %d \nQuantidade Camarote: %d\nQuantidade Balcão nobre: %d\n");
+        String retorno = String.format("Quantidade de Poltronas A: %d \nQuantidade de Poltrona B: %d \nQuantidade de Frisa: %d \nQuantidade Camarote: %d\nQuantidade Balcão nobre: %d\n",
+                this.qtPlateiaA,this.qtPlateiaB,this.qtFrisa,this.qtCamarote,this.qtBalcaoNobre);
         return retorno;
     }
 }

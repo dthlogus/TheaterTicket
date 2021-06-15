@@ -77,7 +77,6 @@ public class Banco {
             if (atracaoLista.equals(atracao)) {
                 atracoes.remove(atracaoLista);
                 atracoes.add(atracao);
-                System.out.println("Alterado com sucesso");
                 return;
             }
         }
@@ -94,4 +93,6 @@ public class Banco {
         }
         System.out.println("Essa atração não existe");
     }
+
+
 }

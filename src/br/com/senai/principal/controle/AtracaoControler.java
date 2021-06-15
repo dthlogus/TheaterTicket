@@ -73,6 +73,7 @@ public class AtracaoControler {
         id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         banco.alterarAtracao(atracao);
+        System.out.println("Alterado com sucesso");
     }
 
     private void cadastrarAtracao(Scanner scan) {
@@ -93,6 +94,6 @@ public class AtracaoControler {
         Banco banco = new Banco();
         System.out.println("Qual é o ID da atração desejada?");
         Atracao atracao = banco.buscarAtracaoPorId(Integer.valueOf(scan.nextLine()));
-        System.out.println(atracao);
+        System.out.println(atracao.getPoltrona());
     }
 }

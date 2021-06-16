@@ -23,6 +23,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return String.format("Nome do usuário: %s \nCpf do usuário: %s\n",this.nome, this.cpf);
+        return String.format("Nome do usuário: %s \nCPF do usuário: %s\n",this.nome, this.cpf);
     }
 }

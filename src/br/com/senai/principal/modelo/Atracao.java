@@ -1,5 +1,6 @@
 package br.com.senai.principal.modelo;
 
+import br.com.senai.principal.util.FaixaEtaria;
 import br.com.senai.principal.util.Genero;
 import br.com.senai.principal.util.Horario;
 
@@ -7,7 +8,7 @@ public class Atracao {
 
     private Integer id;
     private String nome;
-    private String faixaEtaria;
+    private FaixaEtaria faixaEtaria;
     private Genero genero;
     private String diretor;
     private Horario horario;
@@ -33,11 +34,11 @@ public class Atracao {
         this.nome = nome;
     }
 
-    public String getFaixaEtaria() {
+    public FaixaEtaria getFaixaEtaria() {
         return faixaEtaria;
     }
 
-    public void setFaixaEtaria(String faixaEtaria) {
+    public void setFaixaEtaria(FaixaEtaria faixaEtaria) {
         this.faixaEtaria = faixaEtaria;
     }
 

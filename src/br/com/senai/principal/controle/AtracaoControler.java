@@ -2,8 +2,10 @@ package br.com.senai.principal.controle;
 
 import br.com.senai.principal.Dao.Banco;
 import br.com.senai.principal.modelo.Atracao;
+import br.com.senai.principal.util.FaixaEtaria;
 import br.com.senai.principal.util.Genero;
 import br.com.senai.principal.util.Horario;
+import br.com.senai.principal.util.Uteis;
 
 import java.util.Scanner;
 
@@ -83,7 +85,12 @@ public class AtracaoControler {
         System.out.println("Qual o nome da peça?");
         atracao.setNome(scan.nextLine());
         System.out.println("Faixa etaria da peça?");
-        atracao.setFaixaEtaria(scan.nextLine());
+        FaixaEtaria fe = FaixaEtaria.escolherFaixa(scan);
+        while(fe == null){
+            Uteis.validarFaixaEtaria(fe);
+            fe = FaixaEtaria.escolherFaixa(scan);
+        }
+        atracao.setFaixaEtaria(fe);
         atracao.setGenero(Genero.escolherGerenero(scan));
         System.out.println("Qual é o diretor da peça?");
         atracao.setDiretor(scan.nextLine());

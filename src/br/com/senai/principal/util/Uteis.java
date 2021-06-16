@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Uteis {
 
-    public static boolean validadorNomes(String nome){
+    public static Boolean validadorNomes(String nome){
         String regx = "^[\\p{L} .'-]+$";
         Pattern pattern = Pattern.compile(regx,Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(nome);
@@ -16,11 +16,20 @@ public class Uteis {
         }
     }
 
-    public static boolean validadorCpf(String cpf){
+    public static Boolean validadorCpf(String cpf){
         String regx = "([0-9]{11})|([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})";
         Pattern pattern = Pattern.compile(regx);
         Matcher matcher = pattern.matcher(cpf);
         if (matcher.matches()){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public static Boolean validarFaixaEtaria(FaixaEtaria fe){
+        if (fe == null){
+            System.out.println("Por favor, escolha uma faixa etária existente");
             return false;
         }else{
             return true;

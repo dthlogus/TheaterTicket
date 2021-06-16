@@ -49,6 +49,7 @@ public class CompraControler {
                         continuar = false;
                         break;
                     default:
+                        System.out.println("Foi digitado uma letra ou algum número que não esteja no menu, por favor, digite novamente.\n");
                         continuar = true;
                         break;
                 }

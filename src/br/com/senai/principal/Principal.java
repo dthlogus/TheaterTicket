@@ -42,6 +42,10 @@ public class Principal {
                     case 0:
                         continuar = false;
                         break;
+                    default:
+                        System.out.println("Foi digitado uma letra ou algum número que não esteja no menu, por favor, digite novamente.\n");
+                        continuar = true;
+                        break;
 
                 }
 

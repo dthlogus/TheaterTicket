@@ -111,7 +111,6 @@ public class AtracaoControler {
         atracao.setGenero(genero);
         System.out.println("Qual é o diretor da peça?");
         atracao.setDiretor(scan.nextLine());
-        atracao.setHorario(Horario.escolherHorario(scan));
         Horario horario = Horario.escolherHorario(scan);
         while(horario == null){ // Ficará repitindo até que seja selecionado uma opção valida no Enum
             Uteis.validarEnum(horario);

@@ -46,13 +46,14 @@ public class ClienteControler {
         String cpf = "";
         Cliente cliente = new Cliente();
         System.out.println("Digite o seu nome (Digite apenas letras por favor.)");
-        if (Uteis.validadorNomes(scan.nextLine())){
+        nome = scan.nextLine();
+        if (Uteis.validadorNomes(nome)){
             System.out.println("Nome fora do padrão, por favor, tente novamente.\n");
             cadastrarCliente(scan);
         }
-
         System.out.println("Digite o seu cpf (Digite apenas números, e use os padrões 00000000000 ou 000.000.000-00)");
-        if (Uteis.validadorCpf(scan.nextLine())){
+        cpf = scan.nextLine();
+        if (Uteis.validadorCpf(cpf)){
             System.out.println("cpf fora do padrão, por favor, tente novamente.\n");
             cadastrarCliente(scan);
         }
@@ -67,17 +68,15 @@ public class ClienteControler {
 
         System.out.println("Digite o cpf que deseja buscar (Digite apenas números, e use os padrões 00000000000 ou 000.000.000-00)");
         String cpf = scan.nextLine();
-        if (Uteis.validadorCpf(scan.nextLine())){
+        if (Uteis.validadorCpf(cpf)){
             System.out.println("cpf fora do padrão, por favor, tente novamente.\n");
             return;
         }
-
         Cliente cliente = banco.buscarClientePorCpf(cpf);
         if (cliente == null){
             System.out.println("Não foi encontrado um cliente com esse cpf.");
             return;
         }
-
         System.out.println(cliente);
     }
 

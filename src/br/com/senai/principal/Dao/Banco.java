@@ -74,7 +74,7 @@ public class Banco {
 
     public void alterarAtracao(Atracao atracao){
         for (Atracao atracaoLista : atracoes){
-            if (atracaoLista.equals(atracao)) {
+            if (atracaoLista.getId().equals(atracao.getId())) {
                 atracoes.remove(atracaoLista);
                 atracoes.add(atracao);
                 return;

@@ -3,6 +3,7 @@ package br.com.senai.principal.controle;
 import br.com.senai.principal.Dao.Banco;
 import br.com.senai.principal.modelo.Atracao;
 import br.com.senai.principal.modelo.Cliente;
+import br.com.senai.principal.util.Uteis;
 
 import java.util.Scanner;
 
@@ -64,6 +65,10 @@ public class CompraControler {
         System.out.println("Informe o CPF: ");
         String cpf = scan.nextLine();
         Cliente cliente = banco.buscarClientePorCpf(cpf);
+        if (cliente == null){
+            System.out.println("Não existe esse CPF");
+            return;
+        }
         System.out.println(cliente);
 
     }
@@ -95,11 +100,15 @@ public class CompraControler {
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
+        atracao = banco.buscarAtracaoPorId(id);
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
         System.out.println("Quantas poltronas deseja da Plateia A: ");
         qtd = Integer.valueOf(scan.nextLine());
-        atracao = banco.buscarAtracaoPorId(id);
-        atracao.getPoltrona().comprarPlateiaA(qtd);
-        valorTotal += 40.00 * qtd;
+        if(atracao.getPoltrona().comprarPlateiaA(qtd)) {
+            valorTotal += 40.00 * qtd;
+        }
     }
     private  void plateiaB (Scanner scan) {
         Integer id ;
@@ -108,11 +117,15 @@ public class CompraControler {
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
+        atracao = banco.buscarAtracaoPorId(id);
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
         System.out.println("Quantas poltronas deseja da Plateia B: ");
         qtd = Integer.valueOf(scan.nextLine());
-        atracao = banco.buscarAtracaoPorId(id);
-        atracao.getPoltrona().comprarPlateiaB(qtd);
-        valorTotal += 60.00 * qtd;
+        if(atracao.getPoltrona().comprarPlateiaB(qtd)){
+            valorTotal += 60.00 * qtd;
+        }
     }
     private  void frisa (Scanner scan) {
         Integer id ;
@@ -121,11 +134,15 @@ public class CompraControler {
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
+        atracao = banco.buscarAtracaoPorId(id);
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
         System.out.println("Quantas poltronas deseja da Frisa: ");
         qtd = Integer.valueOf(scan.nextLine());
-        atracao = banco.buscarAtracaoPorId(id);
-        atracao.getPoltrona().comprarFrisa(qtd);
-        valorTotal += 80.00 * qtd;
+        if(atracao.getPoltrona().comprarFrisa(qtd)) {
+            valorTotal += 80.00 * qtd;
+        }
     }
     private  void camarote (Scanner scan) {
         Integer id ;
@@ -134,24 +151,31 @@ public class CompraControler {
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
+        atracao = banco.buscarAtracaoPorId(id);
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
         System.out.println("Quantas poltronas deseja do Camarote: ");
         qtd = Integer.valueOf(scan.nextLine());
-        atracao = banco.buscarAtracaoPorId(id);
-        atracao.getPoltrona().comprarCamarote(qtd);
-        valorTotal += 120.00 * qtd;
+        if(atracao.getPoltrona().comprarCamarote(qtd)) {
+            valorTotal += 120.00 * qtd;
+        }
     }
-    private  void balcaoNobre(Scanner scan) {
+    private void balcaoNobre(Scanner scan) {
         Integer id ;
         Banco banco= new Banco();
         Atracao atracao;
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
+        atracao = banco.buscarAtracaoPorId(id);
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
         System.out.println("Quantas poltronas deseja do Balcão Nobre: ");
         qtd = Integer.valueOf(scan.nextLine());
-        atracao = banco.buscarAtracaoPorId(id);
-        atracao.getPoltrona().comprarBalcaoNobre(qtd);
-        valorTotal += 250.00 * qtd;
+        if(atracao.getPoltrona().comprarBalcaoNobre(qtd)){
+            valorTotal += 250.00 * qtd;
+        }
     }
-
 }

@@ -30,11 +30,13 @@ public class Poltrona {
         return qtPlateiaA;
     }
 
-    public void comprarPlateiaA(Integer quantidade) {
+    public Boolean comprarPlateiaA(Integer quantidade) {
         if ((this.qtPlateiaA - quantidade) < 0){
             System.out.println("Não pode ser feita essa compra, a quantidade de poltrona A fica abaixo de zero");
+            return false;
         }else{
             this.qtPlateiaA -= quantidade;
+            return true;
         }
     }
 
@@ -42,11 +44,13 @@ public class Poltrona {
         return qtPlateiaB;
     }
 
-    public void comprarPlateiaB(Integer quantidade) {
+    public Boolean comprarPlateiaB(Integer quantidade) {
         if ((this.qtPlateiaB - quantidade) < 0){
             System.out.println("Não pode ser feita essa compra, a quantidade de poltrona B fica abaixo de zero");
+            return false;
         }else{
             this.qtPlateiaB -= quantidade;
+            return true;
         }
     }
 
@@ -54,11 +58,13 @@ public class Poltrona {
         return qtFrisa;
     }
 
-    public void comprarFrisa(Integer quantidade) {
+    public Boolean comprarFrisa(Integer quantidade) {
         if ((this.qtFrisa - quantidade) < 0){
             System.out.println("Não pode ser feita essa compra, a quantidade de frisa fica abaixo de zero");
+            return false;
         }else{
             this.qtFrisa -= quantidade;
+            return true;
         }
     }
 
@@ -66,11 +72,13 @@ public class Poltrona {
         return qtCamarote;
     }
 
-    public void comprarCamarote(Integer quantidade) {
+    public Boolean comprarCamarote(Integer quantidade) {
         if ((this.qtCamarote - quantidade) < 0){
             System.out.println("Não pode ser feita essa compra, a quantidade de camarote fica abaixo de zero");
+            return false;
         }else{
             this.qtCamarote -= quantidade;
+            return true;
         }
     }
 
@@ -78,11 +86,13 @@ public class Poltrona {
         return qtBalcaoNobre;
     }
 
-    public void comprarBalcaoNobre(Integer quantidade) {
+    public Boolean comprarBalcaoNobre(Integer quantidade) {
         if ((this.qtBalcaoNobre - quantidade) < 0){
             System.out.println("Não pode ser feita essa compra, a quantidade de balcão nobre fica abaixo de zero");
+            return false;
         }else{
             this.qtBalcaoNobre -= quantidade;
+            return true;
         }
     }
 

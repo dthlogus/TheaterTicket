@@ -65,6 +65,9 @@ public class AtracaoControler {
         System.out.println("Qual o ID do cliente que deseja excluir?");
         id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
         banco.excluirAtracao(atracao);
     }
 
@@ -75,6 +78,10 @@ public class AtracaoControler {
         System.out.println("Qual o ID do cliente que deseja alterar?");
         id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
+        atracao = pegarDadosAtracao(atracao);
         banco.alterarAtracao(atracao);
         System.out.println("Alterado com sucesso");
     }
@@ -82,26 +89,45 @@ public class AtracaoControler {
     private void cadastrarAtracao(Scanner scan) {
         Banco banco = new Banco();
         Atracao atracao = new Atracao();
+        atracao = pegarDadosAtracao(atracao);
+        banco.salvarAtracao(atracao);
+    }
+
+    private Atracao pegarDadosAtracao(Atracao atracao){
         System.out.println("Qual o nome da peça?");
         atracao.setNome(scan.nextLine());
         System.out.println("Faixa etaria da peça?");
         FaixaEtaria fe = FaixaEtaria.escolherFaixa(scan);
-        while(fe == null){
-            Uteis.validarFaixaEtaria(fe);
+        while(fe == null){ // Ficará repitindo até que seja selecionado uma opção valida no Enum
+            Uteis.validarEnum(fe);
             fe = FaixaEtaria.escolherFaixa(scan);
-        }
+        } // Fim do While
         atracao.setFaixaEtaria(fe);
-        atracao.setGenero(Genero.escolherGerenero(scan));
+        Genero genero = Genero.escolherGerenero(scan);
+        while(genero == null){ // Ficará repitindo até que seja selecionado uma opção valida no Enum
+            Uteis.validarEnum(genero);
+            genero = Genero.escolherGerenero(scan);
+        } // Fim do While
+        atracao.setGenero(genero);
         System.out.println("Qual é o diretor da peça?");
         atracao.setDiretor(scan.nextLine());
         atracao.setHorario(Horario.escolherHorario(scan));
-        banco.salvarAtracao(atracao);
+        Horario horario = Horario.escolherHorario(scan);
+        while(horario == null){ // Ficará repitindo até que seja selecionado uma opção valida no Enum
+            Uteis.validarEnum(horario);
+            horario = Horario.escolherHorario(scan);
+        } // Fim do While
+        atracao.setHorario(horario);
+        return atracao;
     }
 
     private void mostrarPoltrona(Scanner scan){
         Banco banco = new Banco();
         System.out.println("Qual é o ID da atração desejada?");
         Atracao atracao = banco.buscarAtracaoPorId(Integer.valueOf(scan.nextLine()));
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
         System.out.println(atracao.getPoltrona());
     }
 }

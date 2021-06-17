@@ -27,9 +27,18 @@ public class Uteis {
         }
     }
 
-    public static Boolean validarFaixaEtaria(FaixaEtaria fe){
-        if (fe == null){
-            System.out.println("Por favor, escolha uma faixa etária existente");
+    public static Boolean validarEnum(Object objeto){
+        if (objeto == null){
+            System.out.println("Por favor, escolha dentro das opções existente.");
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public static Boolean validarId(Object objeto){
+        if (objeto == null){
+            System.out.println("Não existe esse ID, por favor, tente novamente.");
             return false;
         }else{
             return true;

@@ -2,6 +2,7 @@ package br.com.senai.principal.Dao;
 
 import br.com.senai.principal.modelo.Atracao;
 import br.com.senai.principal.modelo.Cliente;
+import br.com.senai.principal.modelo.Compra;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ public class Banco {
     //Tabelas do banco
     private static List<Cliente> clientes = new ArrayList<>();
     private static List<Atracao> atracoes = new ArrayList<>();
+    private static List<Compra> compras = new ArrayList<>();
 
     //ID's
     private static Integer idCliente = 1;
@@ -98,5 +100,30 @@ public class Banco {
         System.out.println("Essa atração não existe");
     }
 
+    // metodos Compra
+    public Compra buscarCompraPorCpf(String cpf){
+        if (compras.isEmpty()){
+            System.out.println("Não foi efetuado nenhuma compra até o momento");
+        }
+        for (Compra compra : compras){
+            if(compra.getCliente().getCpf().equals(cpf)){
+                return compra;
+            }
+        }
+        return null;
+    }
 
+    public void adicionarCompra(Cliente cliente, Double valorTotal, Atracao atracao){
+        Compra compra = buscarCompraPorCpf(cliente.getCpf());
+        if (compra == null){
+            compra.setCliente(cliente);
+            compra.setValorTotal(valorTotal);
+            compra.adiconarAtracao(atracao);
+            compras.add(compra);
+            return;
+        }
+        compra.setValorTotal(valorTotal);
+        compra.adiconarAtracao(atracao);
+        return;
+    }
 }

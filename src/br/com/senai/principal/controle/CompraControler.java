@@ -8,9 +8,12 @@ import br.com.senai.principal.util.Uteis;
 import java.util.Scanner;
 
 public class CompraControler {
+    private Banco banco = new Banco();
     private Boolean continuar = true;
     private Integer opcao = 10000;
     private Double valorTotal = 0.0;
+    private Cliente clienteDaCompra;
+    private Atracao atracaoDaCompra;
 
     private Scanner scan = new Scanner(System.in);
 
@@ -58,7 +61,9 @@ public class CompraControler {
                         break;
                 }
 
-            }System.out.println("O valor total é: R$ " + valorTotal);
+            }
+            banco.adicionarCompra(clienteDaCompra, valorTotal, atracaoDaCompra);
+            System.out.println("O valor total é: R$ " + valorTotal);
 
     }
     // O usuario vai colocar o CPF dele e com isso vai realizar uma procura no banco e motrar se está cadastrado.
@@ -68,6 +73,7 @@ public class CompraControler {
         System.out.println("Informe o CPF: ");
         String cpf = scan.nextLine();
         Cliente cliente = banco.buscarClientePorCpf(cpf);
+        clienteDaCompra = cliente;
         if (cliente == null){
             System.out.println("Não existe esse CPF");
             return;
@@ -77,13 +83,11 @@ public class CompraControler {
     }
     // Mostrar as peças cadastradas
     private void mostrarTodasAsAtracoes() {
-        Banco banco = new Banco();
         banco.mostrarTodasAsAtracoes();
     }
     // Vai pedir ao usuário selecionar a peça pelo ID e mostrar a quantidade de poltronas e os lugares das poltronas
     public void selecionarPeça (Scanner scan) {
         Integer id;
-        Banco banco = new Banco();
         Atracao atracao;
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
@@ -93,12 +97,11 @@ public class CompraControler {
         System.out.println(" Quantidade da Frisa: " + atracao.getPoltrona().getQtFrisa() + " -------Preço da poltrona: R$ 80,00");
         System.out.println(" Quantidade do Camarote: " + atracao.getPoltrona().getQtCamarote() + " -------Preço da poltrona R$ 120,00");
         System.out.println(" Quantidade do Balcão Nobre: " + atracao.getPoltrona().getQtBalcaoNobre() + " -------Preço da poltrona: R$ 250,00");
-
+        atracaoDaCompra = atracao;
         banco.alterarAtracao(atracao);
     }
     private  void plateiaA (Scanner scan) {
-        Integer id ;
-        Banco banco= new Banco();
+        Integer id;
         Atracao atracao;
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
@@ -114,8 +117,7 @@ public class CompraControler {
         }
     }
     private  void plateiaB (Scanner scan) {
-        Integer id ;
-        Banco banco= new Banco();
+        Integer id;
         Atracao atracao;
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
@@ -131,8 +133,7 @@ public class CompraControler {
         }
     }
     private  void frisa (Scanner scan) {
-        Integer id ;
-        Banco banco= new Banco();
+        Integer id;
         Atracao atracao;
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
@@ -148,8 +149,7 @@ public class CompraControler {
         }
     }
     private  void camarote (Scanner scan) {
-        Integer id ;
-        Banco banco= new Banco();
+        Integer id;
         Atracao atracao;
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");
@@ -165,8 +165,7 @@ public class CompraControler {
         }
     }
     private void balcaoNobre(Scanner scan) {
-        Integer id ;
-        Banco banco= new Banco();
+        Integer id;
         Atracao atracao;
         int qtd = 0;
         System.out.println("Selecione a peça que deseja pelo ID: ");

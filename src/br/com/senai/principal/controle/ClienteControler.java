@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class ClienteControler {
 
     private Boolean continuar = true;
-    private Integer opcao = 0;
+    private Integer opcao = 10000;
     private Scanner scan = new Scanner(System.in);
 
     public void iniciar() {
@@ -19,7 +19,10 @@ public class ClienteControler {
             System.out.println("1. Salvar o Cliente");
             System.out.println("2. Buscar o Cliente pelo CPF");
             System.out.println("0. Sair");
-            opcao = Integer.valueOf(scan.nextLine());
+            try {
+                opcao = Integer.valueOf(scan.nextLine());
+            }catch(Exception e){
+            }
 
             switch (opcao) {
                 case 1:
@@ -32,7 +35,7 @@ public class ClienteControler {
                     continuar = false;
                     break;
                 default:
-                    System.out.println("Foi digitado uma letra ou algum número que não esteja no menu, por favor, digite novamente.\n");
+                    System.out.println("Foi digitado algum número que não esteja no menu, letra ou palavra, por favor, digite novamente.\n");
                     continuar = true;
                     break;
             }

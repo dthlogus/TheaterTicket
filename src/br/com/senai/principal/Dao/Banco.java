@@ -58,6 +58,10 @@ public class Banco {
     }
 
     public void mostrarTodasAsAtracoes(){
+        if(atracoes.isEmpty()){
+            System.out.println("Não existe atração cadastrada.");
+            return;
+        }
         for (Atracao atracao: atracoes) {
             System.out.println(atracao);
         }

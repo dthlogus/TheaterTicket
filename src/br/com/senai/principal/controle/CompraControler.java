@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CompraControler {
     private Boolean continuar = true;
-    private Integer opcao = 0;
+    private Integer opcao = 10000;
     private Double valorTotal = 0.0;
 
     private Scanner scan = new Scanner(System.in);
@@ -27,7 +27,10 @@ public class CompraControler {
                 System.out.println(" 4 - CAMAROTE");
                 System.out.println(" 5 - BALCÃO NOBRE");
                 System.out.println(" 0 - Sair");
-                opcao = Integer.valueOf(scan.nextLine());
+                try {
+                    opcao = Integer.valueOf(scan.nextLine());
+                }catch(Exception e){
+                }
 
                 switch (opcao) {
                     case 1 :
@@ -50,7 +53,7 @@ public class CompraControler {
                         continuar = false;
                         break;
                     default:
-                        System.out.println("Foi digitado uma letra ou algum número que não esteja no menu, por favor, digite novamente.\n");
+                        System.out.println("Foi digitado algum número que não esteja no menu, letra ou palavra, por favor, digite novamente.\n");
                         continuar = true;
                         break;
                 }

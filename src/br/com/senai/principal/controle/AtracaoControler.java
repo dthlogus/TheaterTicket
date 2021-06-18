@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class AtracaoControler {
 
     private Boolean continuar = true;
-    private Integer opcao = 0;
+    private Integer opcao = 10000;
     private Scanner scan = new Scanner(System.in);
 
     public void iniciar(){
@@ -24,7 +24,10 @@ public class AtracaoControler {
             System.out.println("4. Mostrar atrações");
             System.out.println("5. Mostrar Poltronas");
             System.out.println("0. Sair");
-            opcao = Integer.valueOf(scan.nextLine());
+            try {
+                opcao = Integer.valueOf(scan.nextLine());
+            }catch(Exception e){
+            }
 
             switch (opcao){
                 case 1:
@@ -46,7 +49,7 @@ public class AtracaoControler {
                     continuar = false;
                     break;
                 default:
-                    System.out.println("Foi digitado uma letra ou algum número que não esteja no menu, por favor, digite novamente.\n");
+                    System.out.println("Foi digitado algum número que não esteja no menu, letra ou palavra, por favor, digite novamente.\n");
                     continuar = true;
                     break;
             }

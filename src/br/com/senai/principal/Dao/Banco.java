@@ -117,9 +117,6 @@ public static Banco getInstance(){
 
     // metodos Compra
     public Compra buscarCompraPorCpf(String cpf){
-        if (compras.isEmpty()){
-            System.out.println("Não foi efetuado nenhuma compra até o momento");
-        }
         for (Compra compra : compras){
             if(compra.getCliente().getCpf().equals(cpf)){
                 return compra;

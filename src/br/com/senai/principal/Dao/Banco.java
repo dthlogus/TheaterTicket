@@ -70,7 +70,7 @@ public static Banco getInstance(){
 
     //BANCO REFERENTE AS ATRAÇÕES
     public void salvarAtracao(Atracao atracao){
-        atracao.setId(idAtracao);
+        atracao.setId(idAtracao++);
         atracoes.add(atracao);
     }
 
@@ -146,6 +146,12 @@ public static Banco getInstance(){
 
     //Decidindo a maior e menor bilheteria
     public void estatisticasQntMaisVendidos(){
+
+        if(atracoes.size() == 0){
+            System.out.println("Não há peças cadastradas.");
+            return;
+        }
+
         Atracao maiorBilheteria = atracoes.get(0);
         Atracao menorBelheteria = atracoes.get(0);
 
@@ -164,6 +170,12 @@ public static Banco getInstance(){
     }
 
     public void estatisticaPoltronasOcupadas(){
+
+        if(atracoes.size() == 0){
+            System.out.println("Não há peças cadastradas.");
+            return;
+        }
+
         Atracao menorOcupacao = atracoes.get(0);
         Atracao maiorOcupacao = atracoes.get(0);
 

@@ -8,7 +8,7 @@ import br.com.senai.principal.util.Uteis;
 import java.util.Scanner;
 
 public class CompraControler {
-    private Banco banco = new Banco();
+    private Banco banco = Banco.getInstance();
     private Boolean continuar = true;
     private Integer opcao = 10000;
     private Double valorTotal = 0.0;
@@ -72,7 +72,7 @@ public class CompraControler {
     }
     // O usuario vai colocar o CPF dele e com isso vai realizar uma procura no banco e motrar se está cadastrado.
     public void buscarPorCPF(Scanner scan) {
-        Banco banco = new Banco();
+        Banco banco = Banco.getInstance();
 
         System.out.println("Informe o CPF: ");
         String cpf = scan.nextLine();
@@ -104,7 +104,7 @@ public class CompraControler {
         atracaoDaCompra = atracao;
         banco.alterarAtracao(atracao);
     }
-    private  void plateiaA (Scanner scan) {
+    private void plateiaA (Scanner scan) {
         Integer id;
         Atracao atracao;
         int qtd = 0;
@@ -120,7 +120,7 @@ public class CompraControler {
             valorTotal += 40.00 * qtd;
         }
     }
-    private  void plateiaB (Scanner scan) {
+    private void plateiaB (Scanner scan) {
         Integer id;
         Atracao atracao;
         int qtd = 0;
@@ -136,7 +136,7 @@ public class CompraControler {
             valorTotal += 60.00 * qtd;
         }
     }
-    private  void frisa (Scanner scan) {
+    private void frisa (Scanner scan) {
         Integer id;
         Atracao atracao;
         int qtd = 0;
@@ -152,7 +152,7 @@ public class CompraControler {
             valorTotal += 80.00 * qtd;
         }
     }
-    private  void camarote (Scanner scan) {
+    private void camarote (Scanner scan) {
         Integer id;
         Atracao atracao;
         int qtd = 0;

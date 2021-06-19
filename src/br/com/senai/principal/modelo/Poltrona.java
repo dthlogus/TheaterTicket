@@ -8,6 +8,7 @@ public class Poltrona {
     private Integer qtFrisa;
     private Integer qtCamarote;
     private Integer qtBalcaoNobre;
+    private Integer qntTotal;
 
     public Poltrona(){
         this.qtPlateiaA = 25;
@@ -15,6 +16,7 @@ public class Poltrona {
         this.qtFrisa = 30;
         this.qtCamarote = 50;
         this.qtBalcaoNobre = 50;
+        this.qntTotal = 255;
     }
 
 
@@ -36,6 +38,7 @@ public class Poltrona {
             return false;
         }else{
             this.qtPlateiaA -= quantidade;
+            this.qntTotal -= quantidade;
             return true;
         }
     }
@@ -50,6 +53,7 @@ public class Poltrona {
             return false;
         }else{
             this.qtPlateiaB -= quantidade;
+            this.qntTotal -= quantidade;
             return true;
         }
     }
@@ -64,6 +68,7 @@ public class Poltrona {
             return false;
         }else{
             this.qtFrisa -= quantidade;
+            this.qntTotal -= quantidade;
             return true;
         }
     }
@@ -78,6 +83,7 @@ public class Poltrona {
             return false;
         }else{
             this.qtCamarote -= quantidade;
+            this.qntTotal -= quantidade;
             return true;
         }
     }
@@ -92,8 +98,13 @@ public class Poltrona {
             return false;
         }else{
             this.qtBalcaoNobre -= quantidade;
+            this.qntTotal -= quantidade;
             return true;
         }
+    }
+
+    public Integer getQntTotal() {
+        return qntTotal;
     }
 
     @Override

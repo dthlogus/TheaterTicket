@@ -12,6 +12,7 @@ public class CompraControler {
     private Boolean continuar = true;
     private Integer opcao = 10000;
     private Double valorTotal = 0.0;
+    private int quantidadePoltrona = 0;
     private Cliente clienteDaCompra;
     private Atracao atracaoDaCompra;
 
@@ -69,6 +70,8 @@ public class CompraControler {
             banco.adicionarCompra(clienteDaCompra, valorTotal, atracaoDaCompra);
             System.out.println("O valor total é: R$ " + valorTotal);
 
+
+
     }
     // O usuario vai colocar o CPF dele e com isso vai realizar uma procura no banco e motrar se está cadastrado.
     public void buscarPorCPF(Scanner scan) {
@@ -90,26 +93,25 @@ public class CompraControler {
         banco.mostrarTodasAsAtracoes();
     }
     // Vai pedir ao usuário selecionar a peça pelo ID e mostrar a quantidade de poltronas e os lugares das poltronas
-    public void selecionarPeça (Scanner scan) {
+    public Integer selecionarPeça (Scanner scan) {
         Integer id;
         Atracao atracao;
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
-        System.out.println(" Quantidade da Plateia A: " + atracao.getPoltrona().getQtPlateiaA() + " -------Preço da poltrona: R$ 40,00");
-        System.out.println(" Quantidade da Plateia B: " + atracao.getPoltrona().getQtPlateiaB() + " -------Preço da poltrona: R$ 60,00");
-        System.out.println(" Quantidade da Frisa: " + atracao.getPoltrona().getQtFrisa() + " -------Preço da poltrona: R$ 80,00");
-        System.out.println(" Quantidade do Camarote: " + atracao.getPoltrona().getQtCamarote() + " -------Preço da poltrona R$ 120,00");
-        System.out.println(" Quantidade do Balcão Nobre: " + atracao.getPoltrona().getQtBalcaoNobre() + " -------Preço da poltrona: R$ 250,00");
+        System.out.println("Quantidade da Plateia A: " + atracao.getPoltrona().getQtPlateiaA() + " -------Preço da poltrona: R$ 40,00");
+        System.out.println("Quantidade da Plateia B: " + atracao.getPoltrona().getQtPlateiaB() + " -------Preço da poltrona: R$ 60,00");
+        System.out.println("Quantidade da Frisa: " + atracao.getPoltrona().getQtFrisa() + " -------Preço da poltrona: R$ 80,00");
+        System.out.println("Quantidade do Camarote: " + atracao.getPoltrona().getQtCamarote() + " -------Preço da poltrona R$ 120,00");
+        System.out.println("Quantidade do Balcão Nobre: " + atracao.getPoltrona().getQtBalcaoNobre() + " -------Preço da poltrona: R$ 250,00");
         atracaoDaCompra = atracao;
         banco.alterarAtracao(atracao);
+        return id;
     }
     private void plateiaA (Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -118,14 +120,14 @@ public class CompraControler {
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarPlateiaA(qtd)) {
             valorTotal += 40.00 * qtd;
+            quantidadePoltrona = qtd;
+            System.out.println("Foram compradas " + quantidadePoltrona + " poltrona(s) da Plateia A");
         }
     }
     private void plateiaB (Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -134,14 +136,14 @@ public class CompraControler {
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarPlateiaB(qtd)){
             valorTotal += 60.00 * qtd;
+            quantidadePoltrona = qtd;
+            System.out.println("Foram compradas " + quantidadePoltrona + " poltrona(s) da Plateia B");
         }
     }
     private void frisa (Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -150,14 +152,14 @@ public class CompraControler {
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarFrisa(qtd)) {
             valorTotal += 80.00 * qtd;
+            quantidadePoltrona = qtd;
+            System.out.println("Foram compradas " + quantidadePoltrona + " poltrona(s) da Frisa");
         }
     }
     private void camarote (Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -166,14 +168,14 @@ public class CompraControler {
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarCamarote(qtd)) {
             valorTotal += 120.00 * qtd;
+            quantidadePoltrona = qtd;
+            System.out.println("Foram compradas " + quantidadePoltrona + " poltrona(s) do Camarote");
         }
     }
     private void balcaoNobre(Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -182,6 +184,8 @@ public class CompraControler {
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarBalcaoNobre(qtd)){
             valorTotal += 250.00 * qtd;
+            quantidadePoltrona = qtd;
+            System.out.println("Foram compradas " + quantidadePoltrona + " poltrona(s) do Balcão Nobre");
         }
     }
 }

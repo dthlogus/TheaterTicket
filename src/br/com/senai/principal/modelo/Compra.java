@@ -33,4 +33,5 @@ public class Compra {
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
+
 }

@@ -41,7 +41,7 @@ public class ReciboControle
     private void buscarRecibo(Scanner scan) {
         System.out.println("Informe o seu CPF:");
         String cpf = scan.nextLine();
-        Banco banco = new Banco();
+        Banco banco = Banco.getInstance();
         Compra compra = banco.buscarCompraPorCpf(cpf);
         if(compra == null){
             System.out.println("Não existe compra.");

@@ -13,6 +13,8 @@ public class Atracao {
     private String diretor;
     private Horario horario;
     private Poltrona poltrona;
+    private Double valorArrecadado = 0.00;
+
 
     public Atracao(){
         this.poltrona = new Poltrona();
@@ -69,6 +71,10 @@ public class Atracao {
     public Poltrona getPoltrona() {
         return this.poltrona;
     }
+
+    public Double getValorArrecadado(){return valorArrecadado;}
+
+    public void setValorArrecadado(Double valorArrecadado){this.valorArrecadado += valorArrecadado;}
 
     @Override
     public String toString() {

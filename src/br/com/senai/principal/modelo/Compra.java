@@ -10,6 +10,7 @@ public class Compra {
     private Double valorTotal = 0.0;
 
 
+
     public Cliente getCliente() {
         return cliente;
     }

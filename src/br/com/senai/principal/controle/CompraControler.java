@@ -15,6 +15,7 @@ public class CompraControler {
     private int quantidadePoltrona = 0;
     private Cliente clienteDaCompra;
     private Atracao atracaoDaCompra;
+    public Double valorAtracao = 0.0;
 
     private Scanner scan = new Scanner(System.in);
 
@@ -60,6 +61,7 @@ public class CompraControler {
                     case 0 :
                         continuar = false;
                         System.out.println(valorTotal);
+                        somaTotal();
                         break;
                     default:
                         System.out.println("Foi digitado algum número que não esteja no menu, letra ou palavra, por favor, digite novamente.\n");
@@ -67,7 +69,7 @@ public class CompraControler {
                         break;
                 }
             }
-            banco.adicionarCompra(clienteDaCompra, valorTotal, atracaoDaCompra);
+            banco.adicionarCompra(clienteDaCompra, valorTotal, atracaoDaCompra, valorAtracao);
             System.out.println("O valor total é: R$ " + valorTotal);
 
 
@@ -118,8 +120,10 @@ public class CompraControler {
         }
         System.out.println("Quantas poltronas deseja da Plateia A: ");
         qtd = Integer.valueOf(scan.nextLine());
+        Double vp = 40.00 * qtd;
         if(atracao.getPoltrona().comprarPlateiaA(qtd)) {
-            valorTotal += 40.00 * qtd;
+            valorTotal += vp;
+            atracao.setValorArrecadado(vp);
             clienteDaCompra.getAtracaoCliente().get(id).setQtPlateiaA(qtd);
         }
     }
@@ -134,7 +138,9 @@ public class CompraControler {
         System.out.println("Quantas poltronas deseja da Plateia B: ");
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarPlateiaB(qtd)){
-            valorTotal += 60.00 * qtd;
+            Double vp = 60.00 * qtd;
+            valorTotal += vp;
+            atracao.setValorArrecadado(vp);
             clienteDaCompra.getAtracaoCliente().get(id).setQtPlateiaB(qtd);
         }
     }
@@ -149,7 +155,9 @@ public class CompraControler {
         System.out.println("Quantas poltronas deseja da Frisa: ");
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarFrisa(qtd)) {
-            valorTotal += 80.00 * qtd;
+            Double vp = 80.00 * qtd;
+            valorTotal += vp;
+            atracao.setValorArrecadado(vp);
             clienteDaCompra.getAtracaoCliente().get(id).setQtFrisa(qtd);
         }
     }
@@ -164,7 +172,9 @@ public class CompraControler {
         System.out.println("Quantas poltronas deseja do Camarote: ");
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarCamarote(qtd)) {
-            valorTotal += 120.00 * qtd;
+            Double vp = 120.00 * qtd;
+            valorTotal += vp;
+            atracao.setValorArrecadado(vp);
             clienteDaCompra.getAtracaoCliente().get(id).setQtCamarote(qtd);
         }
     }
@@ -179,8 +189,15 @@ public class CompraControler {
         System.out.println("Quantas poltronas deseja do Balcão Nobre: ");
         qtd = Integer.valueOf(scan.nextLine());
         if(atracao.getPoltrona().comprarBalcaoNobre(qtd)){
-            valorTotal += 250.00 * qtd;
+            Double vp = 250.00 * qtd;
+            valorTotal += vp;
+            atracao.setValorArrecadado(vp);
             clienteDaCompra.getAtracaoCliente().get(id).setQtBalcaoNobre(qtd);
         }
+    }
+
+    public Double somaTotal(){
+        valorAtracao += valorTotal;
+        return valorAtracao;
     }
 }

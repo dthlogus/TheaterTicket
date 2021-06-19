@@ -4,6 +4,7 @@ import br.com.senai.principal.controle.AtracaoControler;
 import br.com.senai.principal.controle.ClienteControler;
 import br.com.senai.principal.controle.CompraControler;
 import br.com.senai.principal.controle.EstatisticaController;
+import br.com.senai.principal.controle.ReciboControle;
 
 import java.util.Scanner;
 
@@ -24,6 +25,7 @@ public class Principal {
             System.out.println("1. Cliente");
             System.out.println("2. Atração");
             System.out.println("3. Compra");//adcionando a opção de compra
+            System.out.println("4. Recibo de Compras");
             System.out.println("5. Estatisticas");
             System.out.println("0. Sair");
             try {
@@ -43,6 +45,10 @@ public class Principal {
                 case 3:
                     CompraControler coc = new CompraControler();
                     coc.iniciar();
+                    break;
+                case 4:
+                    ReciboControle rc = new ReciboControle();
+                    rc.iniciar();
                     break;
                 case 5:
                     EstatisticaController estat = new EstatisticaController();

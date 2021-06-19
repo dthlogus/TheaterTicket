@@ -42,25 +42,29 @@ public class CompraControler {
                         break;
                     case 2 :
                         plateiaB(scan);
+                        System.out.println(valorTotal);
                         break;
                     case 3 :
                         frisa(scan);
+                        System.out.println(valorTotal);
                         break;
                     case 4 :
                         camarote(scan);
+                        System.out.println(valorTotal);
                         break;
                     case 5 :
                         balcaoNobre(scan);
+                        System.out.println(valorTotal);
                         break;
                     case 0 :
                         continuar = false;
+                        System.out.println(valorTotal);
                         break;
                     default:
                         System.out.println("Foi digitado algum número que não esteja no menu, letra ou palavra, por favor, digite novamente.\n");
                         continuar = true;
                         break;
                 }
-
             }
             banco.adicionarCompra(clienteDaCompra, valorTotal, atracaoDaCompra);
             System.out.println("O valor total é: R$ " + valorTotal);

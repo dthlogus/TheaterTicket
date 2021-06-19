@@ -62,12 +62,12 @@ public class ClienteControler {
         }
         cliente.setNome(nome);
         cliente.setCpf(cpf);
-        Banco banco = new Banco();
+        Banco banco = Banco.getInstance();
         banco.salvarCliente(cliente);
     }
 
     public void buscarPorCPF(Scanner scan) {
-        Banco banco = new Banco();
+        Banco banco = Banco.getInstance();
 
         System.out.println("Digite o cpf que deseja buscar (Digite apenas números, e use os padrões 00000000000 ou 000.000.000-00)");
         String cpf = scan.nextLine();

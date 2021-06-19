@@ -3,12 +3,27 @@ package br.com.senai.principal.Dao;
 import br.com.senai.principal.modelo.Atracao;
 import br.com.senai.principal.modelo.Cliente;
 import br.com.senai.principal.modelo.Compra;
+import br.com.senai.principal.util.Horario;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Banco {
 
+public static Banco instanciaBanco;
+
+private Banco(){
+
+}
+//Instanciar o banco "singleton"
+public static Banco getInstance(){
+    if(instanciaBanco != null){
+        return instanciaBanco;
+    }else {
+        instanciaBanco = new Banco();
+        return instanciaBanco;
+    }
+}
     //Tabelas do banco
     private static List<Cliente> clientes = new ArrayList<>();
     private static List<Atracao> atracoes = new ArrayList<>();
@@ -126,4 +141,45 @@ public class Banco {
         compra.adiconarAtracao(atracao);
         return;
     }
+
+    //iniciando estatisticas
+
+    //Decidindo a maior e menor bilheteria
+    public void estatisticasQntMaisVendidos(){
+        Atracao maiorBilheteria = atracoes.get(0);
+        Atracao menorBelheteria = atracoes.get(0);
+
+        for(Atracao atracao : atracoes){
+            //decidindo a menor bilheteria
+             if(atracao.getPoltrona().getQntTotal() < menorBelheteria.getPoltrona().getQntTotal()){
+                 menorBelheteria = atracao;
+             }
+            //decidindo a maior bilheteria
+             if(atracao.getPoltrona().getQntTotal() > maiorBilheteria.getPoltrona().getQntTotal()){
+                 maiorBilheteria = atracao;
+             }
+        }
+        System.out.println("A menor bilheteria é: " + menorBelheteria);
+        System.out.println("A maior bilheteria é: " + maiorBilheteria);
+    }
+
+    public void estatisticaPoltronasOcupadas(){
+        Atracao menorOcupacao = atracoes.get(0);
+        Atracao maiorOcupacao = atracoes.get(0);
+
+        for(Atracao atracao : atracoes){
+            //Decidindo a peça com menor Quantidade de Poltronas reservadas
+            if(atracao.getPoltrona().getQntTotal() < menorOcupacao.getPoltrona().getQntTotal()){
+                menorOcupacao = atracao;
+            }
+            //Decidindo a peça com maior Quantidade de Poltronas reservadas
+            if (atracao.getPoltrona().getQntTotal() > maiorOcupacao.getPoltrona().getQntTotal()){
+                maiorOcupacao = atracao;
+            }
+        }
+
+        System.out.println(menorOcupacao);
+        System.out.println(maiorOcupacao);
+    }
+
 }

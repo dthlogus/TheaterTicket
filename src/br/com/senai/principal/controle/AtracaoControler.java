@@ -56,27 +56,17 @@ public class AtracaoControler {
         }
     }
 
-    private void mostrarTodasAsAtracoes() {
-        Banco banco = new Banco();
-        banco.mostrarTodasAsAtracoes();
-    }
 
-    private void excluirAtracao(Scanner scan) {
-        Integer id;
-        Banco banco = new Banco();
-        Atracao atracao;
-        System.out.println("Qual o ID do cliente que deseja excluir?");
-        id = Integer.valueOf(scan.nextLine());
-        atracao = banco.buscarAtracaoPorId(id);
-        if (!Uteis.validarId(atracao)){
-            return;
-        }
-        banco.excluirAtracao(atracao);
+    private void cadastrarAtracao(Scanner scan) {
+        Banco banco = Banco.getInstance();
+        Atracao atracao = new Atracao();
+        atracao = pegarDadosAtracao(atracao);
+        banco.salvarAtracao(atracao);
     }
 
     private void alterarAtracao(Scanner scan) {
         Integer id;
-        Banco banco = new Banco();
+        Banco banco = Banco.getInstance();
         Atracao atracao;
         System.out.println("Qual o ID do cliente que deseja alterar?");
         id = Integer.valueOf(scan.nextLine());
@@ -89,11 +79,22 @@ public class AtracaoControler {
         System.out.println("Alterado com sucesso");
     }
 
-    private void cadastrarAtracao(Scanner scan) {
-        Banco banco = new Banco();
-        Atracao atracao = new Atracao();
-        atracao = pegarDadosAtracao(atracao);
-        banco.salvarAtracao(atracao);
+    private void excluirAtracao(Scanner scan) {
+        Integer id;
+        Banco banco = Banco.getInstance();
+        Atracao atracao;
+        System.out.println("Qual o ID do cliente que deseja excluir?");
+        id = Integer.valueOf(scan.nextLine());
+        atracao = banco.buscarAtracaoPorId(id);
+        if (!Uteis.validarId(atracao)){
+            return;
+        }
+        banco.excluirAtracao(atracao);
+    }
+
+    private void mostrarTodasAsAtracoes() {
+        Banco banco = Banco.getInstance();
+        banco.mostrarTodasAsAtracoes();
     }
 
     private Atracao pegarDadosAtracao(Atracao atracao){
@@ -124,7 +125,7 @@ public class AtracaoControler {
     }
 
     private void mostrarPoltrona(Scanner scan){
-        Banco banco = new Banco();
+        Banco banco = Banco.getInstance();
         System.out.println("Qual é o ID da atração desejada?");
         Atracao atracao = banco.buscarAtracaoPorId(Integer.valueOf(scan.nextLine()));
         if (!Uteis.validarId(atracao)){

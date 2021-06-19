@@ -3,6 +3,7 @@ package br.com.senai.principal;
 import br.com.senai.principal.controle.AtracaoControler;
 import br.com.senai.principal.controle.ClienteControler;
 import br.com.senai.principal.controle.CompraControler;
+import br.com.senai.principal.controle.EstatisticaController;
 
 import java.util.Scanner;
 
@@ -23,6 +24,7 @@ public class Principal {
             System.out.println("1. Cliente");
             System.out.println("2. Atração");
             System.out.println("3. Compra");//adcionando a opção de compra
+            System.out.println("5. Estatisticas");
             System.out.println("0. Sair");
             try {
                 opcao = Integer.valueOf(scan.nextLine());
@@ -41,6 +43,10 @@ public class Principal {
                 case 3:
                     CompraControler coc = new CompraControler();
                     coc.iniciar();
+                    break;
+                case 5:
+                    EstatisticaController estat = new EstatisticaController();
+                    estat.iniciar();
                     break;
                 case 0:
                     continuar = false;

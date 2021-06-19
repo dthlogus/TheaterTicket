@@ -53,12 +53,14 @@ public class ClienteControler {
         if (Uteis.validadorNomes(nome)){
             System.out.println("Nome fora do padrão, por favor, tente novamente.\n");
             cadastrarCliente(scan);
+            return;
         }
         System.out.println("Digite o seu cpf (Digite apenas números, e use os padrões 00000000000 ou 000.000.000-00)");
         cpf = scan.nextLine();
         if (Uteis.validadorCpf(cpf)){
             System.out.println("cpf fora do padrão, por favor, tente novamente.\n");
             cadastrarCliente(scan);
+            return;
         }
         cliente.setNome(nome);
         cliente.setCpf(cpf);

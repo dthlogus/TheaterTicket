@@ -93,26 +93,25 @@ public class CompraControler {
         banco.mostrarTodasAsAtracoes();
     }
     // Vai pedir ao usuário selecionar a peça pelo ID e mostrar a quantidade de poltronas e os lugares das poltronas
-    public void selecionarPeça (Scanner scan) {
+    public Integer selecionarPeça (Scanner scan) {
         Integer id;
         Atracao atracao;
         System.out.println("Selecione a peça que deseja pelo ID: ");
         id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
-        System.out.println(" Quantidade da Plateia A: " + atracao.getPoltrona().getQtPlateiaA() + " -------Preço da poltrona: R$ 40,00");
-        System.out.println(" Quantidade da Plateia B: " + atracao.getPoltrona().getQtPlateiaB() + " -------Preço da poltrona: R$ 60,00");
-        System.out.println(" Quantidade da Frisa: " + atracao.getPoltrona().getQtFrisa() + " -------Preço da poltrona: R$ 80,00");
-        System.out.println(" Quantidade do Camarote: " + atracao.getPoltrona().getQtCamarote() + " -------Preço da poltrona R$ 120,00");
-        System.out.println(" Quantidade do Balcão Nobre: " + atracao.getPoltrona().getQtBalcaoNobre() + " -------Preço da poltrona: R$ 250,00");
+        System.out.println("Quantidade da Plateia A: " + atracao.getPoltrona().getQtPlateiaA() + " -------Preço da poltrona: R$ 40,00");
+        System.out.println("Quantidade da Plateia B: " + atracao.getPoltrona().getQtPlateiaB() + " -------Preço da poltrona: R$ 60,00");
+        System.out.println("Quantidade da Frisa: " + atracao.getPoltrona().getQtFrisa() + " -------Preço da poltrona: R$ 80,00");
+        System.out.println("Quantidade do Camarote: " + atracao.getPoltrona().getQtCamarote() + " -------Preço da poltrona R$ 120,00");
+        System.out.println("Quantidade do Balcão Nobre: " + atracao.getPoltrona().getQtBalcaoNobre() + " -------Preço da poltrona: R$ 250,00");
         atracaoDaCompra = atracao;
         banco.alterarAtracao(atracao);
+        return id;
     }
     private void plateiaA (Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -126,11 +125,9 @@ public class CompraControler {
         }
     }
     private void plateiaB (Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -144,11 +141,9 @@ public class CompraControler {
         }
     }
     private void frisa (Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -162,11 +157,9 @@ public class CompraControler {
         }
     }
     private void camarote (Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;
@@ -180,11 +173,9 @@ public class CompraControler {
         }
     }
     private void balcaoNobre(Scanner scan) {
-        Integer id;
+        Integer id = atracaoDaCompra.getId();
         Atracao atracao;
         int qtd = 0;
-        System.out.println("Selecione a peça que deseja pelo ID: ");
-        id = Integer.valueOf(scan.nextLine());
         atracao = banco.buscarAtracaoPorId(id);
         if (!Uteis.validarId(atracao)){
             return;

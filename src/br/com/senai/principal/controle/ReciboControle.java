@@ -47,7 +47,8 @@ public class ReciboControle
             System.out.println("Não existe compra.");
             return;
         }
-        System.out.println(compra);
+        System.out.println(compra.getCliente());
+        compra.getCliente().atracoesPoltronasCompradas();
     }
 
 }

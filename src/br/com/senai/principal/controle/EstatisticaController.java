@@ -2,6 +2,9 @@ package br.com.senai.principal.controle;
 
 
 import br.com.senai.principal.Dao.Banco;
+import br.com.senai.principal.modelo.Atracao;
+import br.com.senai.principal.controle.AtracaoControler;
+import br.com.senai.principal.modelo.Compra;
 
 import java.util.Scanner;
 
@@ -37,6 +40,12 @@ public class EstatisticaController {
                 case 2:
                     banco.estatisticaPoltronasOcupadas();
                     break;
+                case 3:
+                    banco.rentabilidadeDaAtracao();
+                    break;
+                case 4:
+                    banco.totalArrecadado();
+                    break;
 
                 default:
                     System.out.println("Opção inválida");
@@ -44,9 +53,5 @@ public class EstatisticaController {
                     break;
             }
         }
-
-
     }
-
-    //
 }

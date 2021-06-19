@@ -66,5 +66,7 @@ public class Principal {
 
         } while (continuar);
         scan.close();
+
+        //ARIGATÔ COELHO-CHAAAAAAAAAAAAAAAAAAAAAAAAN
     }
 }

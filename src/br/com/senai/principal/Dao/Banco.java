@@ -1,5 +1,6 @@
 package br.com.senai.principal.Dao;
 
+import br.com.senai.principal.controle.CompraControler;
 import br.com.senai.principal.modelo.Atracao;
 import br.com.senai.principal.modelo.Cliente;
 import br.com.senai.principal.modelo.Compra;
@@ -125,7 +126,7 @@ public static Banco getInstance(){
         return null;
     }
 
-    public void adicionarCompra(Cliente cliente, Double valorTotal, Atracao atracao){
+    public void adicionarCompra(Cliente cliente, Double valorTotal, Atracao atracao, Double valorAtracao){
         Compra compra = buscarCompraPorCpf(cliente.getCpf());
         if (compra == null){
             compra = new Compra();
@@ -165,10 +166,11 @@ public static Banco getInstance(){
                  maiorBilheteria = atracao;
              }
         }
-        System.out.println("A menor bilheteria é: " + menorBelheteria);
-        System.out.println("A maior bilheteria é: " + maiorBilheteria);
+        System.out.println("A atração com menor bilheteria é: " + menorBelheteria);
+        System.out.println("A atração com maior bilheteria é: " + maiorBilheteria);
     }
 
+    //Identificar Atração com maior/menorocupação de poltronas
     public void estatisticaPoltronasOcupadas(){
 
         if(atracoes.size() == 0){
@@ -190,8 +192,48 @@ public static Banco getInstance(){
             }
         }
 
-        System.out.println(menorOcupacao);
-        System.out.println(maiorOcupacao);
+        System.out.println("A atração com menos reservas de poltronas é:" + menorOcupacao);
+        System.out.println("A atração com mais reservas de poltronas é: "+maiorOcupacao);
+
+    }
+
+
+    //Identificar Atração com maior/menor rentabilidade
+    public void rentabilidadeDaAtracao(){
+
+
+        Atracao menorRentabilidade = atracoes.get(0);
+        Atracao maiorRentabilidade = atracoes.get(0);
+
+        for (Atracao atracao : atracoes) {
+            //Decidindo a menor rentabilidade
+            if(atracao.getValorArrecadado() < menorRentabilidade.getValorArrecadado()){
+                menorRentabilidade = atracao;
+            }
+
+            //Decidindo a maior rentabilidade
+            if (atracao.getValorArrecadado() > maiorRentabilidade.getValorArrecadado()){
+                maiorRentabilidade = atracao;
+            }
+        }
+
+        System.out.println("Atração com menor rentabilidade: " + menorRentabilidade);
+        System.out.println("Atração com maior rentabilidade: " + maiorRentabilidade);
+
+
+    }
+
+
+    public void totalArrecadado(){
+
+        Double totalArrecadado = 0.00;
+
+        for(Atracao atracao: atracoes){
+            totalArrecadado += atracao.getValorArrecadado();
+        }
+
+        System.out.println("Média total arrecada para o teatro: " +(totalArrecadado/atracoes.size()));
+
     }
 
 }

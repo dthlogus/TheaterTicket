@@ -14,11 +14,12 @@ public class EstatisticaController {
     Boolean continuar = true;
     int opcSelecionada;
 
-    public void iniciar(){
+    public void iniciar() {
 
         Banco banco = Banco.getInstance();
 
-        while(continuar){
+        while (continuar) {
+            opcSelecionada = 10000;
             System.out.println("******** ESTATISTICAS ********");
             System.out.println("1. Peça com maior/menor ingressos vendidos");
             System.out.println("2. Sessão com mais/menos poltronas ocupadas");
@@ -28,7 +29,7 @@ public class EstatisticaController {
             opcSelecionada = scan.nextInt();
 
 
-            switch (opcSelecionada){
+            switch (opcSelecionada) {
 
                 case 0:
                     continuar = false;

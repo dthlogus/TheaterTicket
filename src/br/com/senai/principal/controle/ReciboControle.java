@@ -5,27 +5,27 @@ import br.com.senai.principal.modelo.Compra;
 
 import java.util.Scanner;
 
-public class ReciboControle 
-{
+public class ReciboControle {
     private Boolean continuar = true;
-    private Integer opcao = 10000;
+    private Integer opcao;
     private Scanner scan = new Scanner(System.in);
 
     public void iniciar() {
         while (continuar) {
+            opcao = 10000;
             System.out.println("Para imprressão do recibo escolha uma opção:");
             System.out.println("1. Buscar Recibo:");
             System.out.println("0. Sair. ");
-            
+
             try {
                 opcao = Integer.valueOf(scan.nextLine());
-            }catch(Exception e){
+            } catch (Exception e) {
             }
 
             switch (opcao) {
                 case 1:
                     buscarRecibo(scan);
-                    break;                
+                    break;
                 case 0:
                     continuar = false;
                     break;
@@ -43,7 +43,7 @@ public class ReciboControle
         String cpf = scan.nextLine();
         Banco banco = Banco.getInstance();
         Compra compra = banco.buscarCompraPorCpf(cpf);
-        if(compra == null){
+        if (compra == null) {
             System.out.println("Não existe compra.");
             return;
         }

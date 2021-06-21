@@ -46,7 +46,7 @@ public class Cliente {
                 mensagem = mensagem.concat(" Poltronas na plateia B - " + ac.getQtPlateiaB());
             }
             if (ac.getQtFrisa() > 0){
-                mensagem = mensagem.concat("Poltronas no frisa - " + ac.getQtFrisa());
+                mensagem = mensagem.concat(" Poltronas no frisa - " + ac.getQtFrisa());
             }
             if (ac.getQtCamarote() > 0){
                 mensagem = mensagem.concat(" Poltronas no camarote - " + ac.getQtCamarote());
@@ -54,7 +54,7 @@ public class Cliente {
             if (ac.getQtBalcaoNobre() > 0){
                 mensagem = mensagem.concat(" Poltronas na Balcão nobre - " + ac.getQtBalcaoNobre());
             }
-            mensagem = mensagem.concat("\n");
+            mensagem = mensagem.concat("\n Valor total: R$"+ ac.getValorTotal()+"\n");
             System.out.println(mensagem);
         }
     }

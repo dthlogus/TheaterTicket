@@ -10,18 +10,19 @@ import java.util.regex.Pattern;
 public class ClienteControler {
 
     private Boolean continuar = true;
-    private Integer opcao = 10000;
+    private Integer opcao;
     private Scanner scan = new Scanner(System.in);
 
     public void iniciar() {
         while (continuar) {
+            opcao = 10000;
             System.out.println("Digite em número, qual opcão você deseja");
-            System.out.println("1. Salvar o Cliente");
+            System.out.println("1. Cadastrar o Cliente");
             System.out.println("2. Buscar o Cliente pelo CPF");
             System.out.println("0. Sair");
             try {
                 opcao = Integer.valueOf(scan.nextLine());
-            }catch(Exception e){
+            } catch (Exception e) {
             }
 
             switch (opcao) {
@@ -50,14 +51,14 @@ public class ClienteControler {
         Cliente cliente = new Cliente();
         System.out.println("Digite o seu nome (Digite apenas letras por favor.)");
         nome = scan.nextLine();
-        if (Uteis.validadorNomes(nome)){
+        if (Uteis.validadorNomes(nome)) {
             System.out.println("Nome fora do padrão, por favor, tente novamente.\n");
             cadastrarCliente(scan);
             return;
         }
         System.out.println("Digite o seu cpf (Digite apenas números, e use os padrões 00000000000 ou 000.000.000-00)");
         cpf = scan.nextLine();
-        if (Uteis.validadorCpf(cpf)){
+        if (Uteis.validadorCpf(cpf)) {
             System.out.println("cpf fora do padrão, por favor, tente novamente.\n");
             cadastrarCliente(scan);
             return;
@@ -73,12 +74,12 @@ public class ClienteControler {
 
         System.out.println("Digite o cpf que deseja buscar (Digite apenas números, e use os padrões 00000000000 ou 000.000.000-00)");
         String cpf = scan.nextLine();
-        if (Uteis.validadorCpf(cpf)){
+        if (Uteis.validadorCpf(cpf)) {
             System.out.println("cpf fora do padrão, por favor, tente novamente.\n");
             return;
         }
         Cliente cliente = banco.buscarClientePorCpf(cpf);
-        if (cliente == null){
+        if (cliente == null) {
             System.out.println("Não foi encontrado um cliente com esse cpf.");
             return;
         }

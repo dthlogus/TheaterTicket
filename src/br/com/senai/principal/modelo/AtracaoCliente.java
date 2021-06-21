@@ -16,6 +16,7 @@ public class AtracaoCliente {
     private Integer qtFrisa = 0;
     private Integer qtCamarote = 0;
     private Integer qtBalcaoNobre = 0;
+    private Double valorTotal = 0.00;
 
 
     public AtracaoCliente(Atracao atracao){
@@ -89,5 +90,13 @@ public class AtracaoCliente {
 
     public void setQtBalcaoNobre(Integer qtBalcaoNobre) {
         this.qtBalcaoNobre += qtBalcaoNobre;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 }

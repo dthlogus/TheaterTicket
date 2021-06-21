@@ -128,6 +128,9 @@ public static Banco getInstance(){
 
     public void adicionarCompra(Cliente cliente, Double valorTotal, Atracao atracao, Double valorAtracao){
         Compra compra = buscarCompraPorCpf(cliente.getCpf());
+        if (valorTotal <= 0){
+            return;
+        }
         if (compra == null){
             compra = new Compra();
             compra.setCliente(cliente);

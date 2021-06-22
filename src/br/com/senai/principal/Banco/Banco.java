@@ -30,7 +30,7 @@ public static Banco getInstance(){
     private List<Compra> compras = new ArrayList<>();
 
     //ID's
-    private static Integer idAtracao = 1;
+    private Integer idAtracao = 1;
 
 
     // BANCO REFERENTE AO CLIENTE

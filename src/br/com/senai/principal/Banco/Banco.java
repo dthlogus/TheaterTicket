@@ -1,10 +1,8 @@
-package br.com.senai.principal.Dao;
+package br.com.senai.principal.Banco;
 
-import br.com.senai.principal.controle.CompraControler;
 import br.com.senai.principal.modelo.Atracao;
 import br.com.senai.principal.modelo.Cliente;
 import br.com.senai.principal.modelo.Compra;
-import br.com.senai.principal.util.Horario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +23,13 @@ public static Banco getInstance(){
         return instanciaBanco;
     }
 }
+
     //Tabelas do banco
     private static List<Cliente> clientes = new ArrayList<>();
     private static List<Atracao> atracoes = new ArrayList<>();
     private static List<Compra> compras = new ArrayList<>();
 
     //ID's
-    private static Integer idCliente = 1;
     private static Integer idAtracao = 1;
 
 
@@ -55,18 +53,6 @@ public static Banco getInstance(){
             }
         }
         return null;
-    }
-
-    public void alterarClientePorId(Cliente cliente){
-        for (Cliente clienteLista : clientes){
-            if (clienteLista.equals(cliente)) {
-                clientes.remove(clienteLista);
-                clientes.add(cliente);
-                System.out.println("Alteração feita com sucesso");
-                return;
-            }
-        }
-        System.out.println("Esse cliente não existe");
     }
 
     //BANCO REFERENTE AS ATRAÇÕES
@@ -99,6 +85,7 @@ public static Banco getInstance(){
             if (atracaoLista.getId().equals(atracao.getId())) {
                 atracoes.remove(atracaoLista);
                 atracoes.add(atracao);
+                System.out.println("Alterado com sucesso");
                 return;
             }
         }
@@ -126,7 +113,7 @@ public static Banco getInstance(){
         return null;
     }
 
-    public void adicionarCompra(Cliente cliente, Double valorTotal, Atracao atracao, Double valorAtracao){
+    public void adicionarCompra(Cliente cliente, Double valorTotal, Atracao atracao){
         Compra compra = buscarCompraPorCpf(cliente.getCpf());
         if (valorTotal <= 0){
             return;
@@ -220,8 +207,8 @@ public static Banco getInstance(){
             }
         }
 
-        System.out.println("Atração com menor rentabilidade: " + menorRentabilidade);
-        System.out.println("Atração com maior rentabilidade: " + maiorRentabilidade);
+        System.out.println("Atração com menor rentabilidade: " + menorRentabilidade + "\nValor arrecadado: R$"+menorRentabilidade.getValorArrecadado());
+        System.out.println("Atração com maior rentabilidade: " + maiorRentabilidade + "\nValor arrecadado: R$"+maiorRentabilidade.getValorArrecadado());
 
 
     }

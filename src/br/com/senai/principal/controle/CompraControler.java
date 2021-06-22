@@ -1,6 +1,6 @@
 package br.com.senai.principal.controle;
 
-import br.com.senai.principal.Dao.Banco;
+import br.com.senai.principal.Banco.Banco;
 import br.com.senai.principal.modelo.Atracao;
 import br.com.senai.principal.modelo.Cliente;
 import br.com.senai.principal.util.Uteis;
@@ -35,7 +35,7 @@ public class CompraControler {
             System.out.println(" 4 - CAMAROTE");
             System.out.println(" 5 - BALCÃO NOBRE");
             System.out.println(" 0 - Sair");
-            try {
+            try { // resolve o erro de parar o código ao digitar uma letra, o erro está sendo tratado no default.
                 opcao = Integer.valueOf(scan.nextLine());
             } catch (Exception e) {
             }
@@ -67,7 +67,7 @@ public class CompraControler {
             }
         }
         clienteDaCompra.getAtracaoCliente().get(atracaoDaCompra.getId()).setValorTotal(valorTotal);
-        banco.adicionarCompra(clienteDaCompra, valorTotal, atracaoDaCompra, valorAtracao);
+        banco.adicionarCompra(clienteDaCompra, valorTotal, atracaoDaCompra);
         System.out.println("O valor total é: R$ " + valorTotal);
 
 

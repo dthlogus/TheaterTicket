@@ -25,12 +25,12 @@ public static Banco getInstance(){
 }
 
     //Tabelas do banco
-    private static List<Cliente> clientes = new ArrayList<>();
-    private static List<Atracao> atracoes = new ArrayList<>();
-    private static List<Compra> compras = new ArrayList<>();
+    private List<Cliente> clientes = new ArrayList<>();
+    private List<Atracao> atracoes = new ArrayList<>();
+    private List<Compra> compras = new ArrayList<>();
 
     //ID's
-    private static Integer idAtracao = 1;
+    private Integer idAtracao = 1;
 
 
     // BANCO REFERENTE AO CLIENTE

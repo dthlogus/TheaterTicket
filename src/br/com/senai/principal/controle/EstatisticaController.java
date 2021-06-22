@@ -1,10 +1,7 @@
 package br.com.senai.principal.controle;
 
 
-import br.com.senai.principal.Dao.Banco;
-import br.com.senai.principal.modelo.Atracao;
-import br.com.senai.principal.controle.AtracaoControler;
-import br.com.senai.principal.modelo.Compra;
+import br.com.senai.principal.Banco.Banco;
 
 import java.util.Scanner;
 
@@ -26,9 +23,11 @@ public class EstatisticaController {
             System.out.println("3. Peça/sessão mais/menos lucrativa");
             System.out.println("4. Lucro médio do teatro.");
             System.out.println("0. Voltar");
-            opcSelecionada = scan.nextInt();
+            try { // resolve o erro de parar o código ao digitar uma letra, o erro está sendo tratado no default.
+                opcSelecionada = Integer.valueOf(scan.nextLine());
+            }catch (Exception e){
 
-
+            }
             switch (opcSelecionada) {
 
                 case 0:
@@ -47,7 +46,6 @@ public class EstatisticaController {
                 case 4:
                     banco.totalArrecadado();
                     break;
-
                 default:
                     System.out.println("Opção inválida");
                     continuar = true;

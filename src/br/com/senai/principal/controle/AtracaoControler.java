@@ -1,6 +1,6 @@
 package br.com.senai.principal.controle;
 
-import br.com.senai.principal.Dao.Banco;
+import br.com.senai.principal.Banco.Banco;
 import br.com.senai.principal.modelo.Atracao;
 import br.com.senai.principal.util.FaixaEtaria;
 import br.com.senai.principal.util.Genero;
@@ -25,7 +25,7 @@ public class AtracaoControler {
             System.out.println("4. Mostrar atrações");
             System.out.println("5. Mostrar Poltronas");
             System.out.println("0. Sair");
-            try {
+            try { // resolve o erro de parar o código ao digitar uma letra, o erro está sendo tratado no default.
                 opcao = Integer.valueOf(scan.nextLine());
             } catch (Exception e) {
             }

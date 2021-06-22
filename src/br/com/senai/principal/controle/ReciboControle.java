@@ -1,6 +1,6 @@
 package br.com.senai.principal.controle;
 
-import br.com.senai.principal.Dao.Banco;
+import br.com.senai.principal.Banco.Banco;
 import br.com.senai.principal.modelo.Compra;
 
 import java.util.Scanner;
@@ -13,11 +13,11 @@ public class ReciboControle {
     public void iniciar() {
         while (continuar) {
             opcao = 10000;
-            System.out.println("Para imprressão do recibo escolha uma opção:");
+            System.out.println("Para impressão do recibo escolha uma opção:");
             System.out.println("1. Buscar Recibo:");
             System.out.println("0. Sair. ");
 
-            try {
+            try { // resolve o erro de parar o código ao digitar uma letra, o erro está sendo tratado no default.
                 opcao = Integer.valueOf(scan.nextLine());
             } catch (Exception e) {
             }
@@ -35,7 +35,6 @@ public class ReciboControle {
                     break;
             }
         }
-
     }
 
     private void buscarRecibo(Scanner scan) {
@@ -50,5 +49,4 @@ public class ReciboControle {
         System.out.println(compra.getCliente());
         compra.getCliente().atracoesPoltronasCompradas();
     }
-
 }

@@ -1,11 +1,10 @@
 package br.com.senai.principal.controle;
 
-import br.com.senai.principal.Dao.Banco;
+import br.com.senai.principal.Banco.Banco;
 import br.com.senai.principal.modelo.Cliente;
 import br.com.senai.principal.util.Uteis;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class ClienteControler {
 
@@ -20,7 +19,7 @@ public class ClienteControler {
             System.out.println("1. Cadastrar o Cliente");
             System.out.println("2. Buscar o Cliente pelo CPF");
             System.out.println("0. Sair");
-            try {
+            try { // resolve o erro de parar o código ao digitar uma letra, o erro está sendo tratado no default.
                 opcao = Integer.valueOf(scan.nextLine());
             } catch (Exception e) {
             }
@@ -76,6 +75,7 @@ public class ClienteControler {
         String cpf = scan.nextLine();
         if (Uteis.validadorCpf(cpf)) {
             System.out.println("cpf fora do padrão, por favor, tente novamente.\n");
+            buscarPorCPF(scan);
             return;
         }
         Cliente cliente = banco.buscarClientePorCpf(cpf);
@@ -85,6 +85,4 @@ public class ClienteControler {
         }
         System.out.println(cliente);
     }
-
-
 }

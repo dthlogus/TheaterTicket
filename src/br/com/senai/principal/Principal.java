@@ -12,7 +12,7 @@ public class Principal {
     public static void main(String[] args) {
 
         Boolean continuar = true;
-        Integer opcao = 10000;
+        Integer opcao;
         Scanner scan = new Scanner(System.in);
 
         System.out.println("*************************************");
@@ -20,7 +20,7 @@ public class Principal {
         System.out.println("*************************************");
 
         do {
-
+            opcao = 10000;
             System.out.println("Digite em número, qual opcão você deseja");
             System.out.println("1. Cliente");
             System.out.println("2. Atração");
@@ -28,7 +28,7 @@ public class Principal {
             System.out.println("4. Recibo de Compras");
             System.out.println("5. Estatisticas");
             System.out.println("0. Sair");
-            try {
+            try { // resolve o erro de parar o código ao digitar uma letra, o erro está sendo tratado no default.
                 opcao = Integer.valueOf(scan.nextLine());
             } catch (Exception e) {
             }
